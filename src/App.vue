@@ -270,9 +270,9 @@ watch(result, () => {
           <div class="w-full h-fit grid grid-cols-1 gap-4">
             <div v-for="stat in stats?.stats" class="border border-white/10 p-2 rounded-xl">
               {{ stat.value }} : {{ stat.number }} ( {{ stat.number / stats.meta.total * 100 }}% )
-              <div class="w-full h-2 bg-white/10">
-                <div class="h-2 bg-green-500 mt-2 transition-all duration-300 "
-                  :class="`w-[${Math.ceil(stat.number / stats.meta.total * 100)}%]`">
+              <div class="w-full h-2 bg-white/10 rounded-xl mt-2 overflow-hidden">
+                <div class="h-2 bg-green-500 transition-all duration-300 "
+                  :style="`width: ${Math.ceil(stat.number / stats.meta.total * 100)}%`">
                 </div>
               </div>
             </div>
