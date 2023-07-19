@@ -2,9 +2,9 @@ FROM node:18 as build-stage
 
 WORKDIR /build
 COPY package.json package-lock.json ./
-RUN npm install
+RUN yarn install
 COPY ./ .
-RUN npm run build
+RUN yarn run build
 
 FROM nginx:1.13.0-alpine as production-stage
 
