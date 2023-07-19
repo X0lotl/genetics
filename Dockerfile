@@ -1,7 +1,7 @@
 FROM node:18 as build-stage
 
 WORKDIR /build
-COPY package.json package-lock.json ./
+COPY package.json yarn.lock ./
 RUN yarn install
 COPY ./ .
 RUN yarn run build
