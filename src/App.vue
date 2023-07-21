@@ -197,15 +197,15 @@ watch(result, () => {
         <div class="grid grid-cols-2 gap-4">
           <div v-for="alel in alels" class="bg-white/10 rounded-xl p-4">
             <div class="flex justify-between">
-              <InputText v-model="alel.name" placeholder="name" />
+              <InputText v-model="alel.name" placeholder="Назва алеля" />
               <Button icon="pi pi-trash" @click="deleteAlel(alel)" size="large" severity="danger"></Button>
             </div>
             <div class="mt-5 grid grid-cols-1 gap-2">
               <div>
-                Options:
+                Варіанти:
               </div>
               <div v-for="(option, index) in alel.options" class="flex justify-between">
-                <InputText v-model="alel.options[index]" :placeholder="'Option' + option"></InputText>
+                <InputText v-model="alel.options[index]" :placeholder="'Варіант' + option"></InputText>
                 <Button icon="pi pi-trash" @click="alel.options.splice(index, 1)"></Button>
               </div>
               <Button class="mt-4" icon="pi pi-plus" @click="alel.options.push('')"></Button>
@@ -224,8 +224,8 @@ watch(result, () => {
             <div v-for="alel in parent.value?.values">
               {{ alel.alel.name }}
               <div class="grid grid-cols-2 gap-4">
-                <Dropdown placeholder="value" v-model="alel.values[0]" :options="alel.alel.options"></Dropdown>
-                <Dropdown placeholder="value" v-model="alel.values[1]" :options="alel.alel.options"></Dropdown>
+                <Dropdown placeholder="Значення алеля" v-model="alel.values[0]" :options="alel.alel.options"></Dropdown>
+                <Dropdown placeholder="Значення алеля" v-model="alel.values[1]" :options="alel.alel.options"></Dropdown>
               </div>
             </div>
           </div>
@@ -237,7 +237,7 @@ watch(result, () => {
     <div class="grid grid-cols-1 w-full gap-2" :class="{ '!grid-cols-2': result.length < 10 }">
       <div>
         <h2 class="text-2xl my-2">
-          Table:
+          Таблиця:
         </h2>
         <div v-for=" (row, rowIndex)  in  result " class="row grid-cols-2">
           <div v-for=" (cell, cellIndex)  in  row "
@@ -264,7 +264,7 @@ watch(result, () => {
       </div>
       <div v-if="stats" class="mt-2">
         <h2 class="text-2xl">
-          Statistics:  ( Total: {{ stats.meta.total }} )
+          Статистика:  ( Загалом: {{ stats.meta.total }} )
         </h2>
         <div class="mt-2 text-xl">
           <div class="w-full h-fit grid grid-cols-1 gap-4">
