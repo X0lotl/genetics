@@ -122,16 +122,20 @@ watch(parents, () => {
 
 const selectedIndexRow = ref(-1);
 const selectedIndexCell = ref(-1);
+const selectedValue = ref("");
 
-const setSellectedCell = (indexRow: number, indexCell: number) => {
+const setSellectedCell = (indexRow: number, indexCell: number, value: string) => {
   if ((selectedIndexCell.value === indexCell && selectedIndexRow.value === indexRow) || (indexRow === 0 || indexCell === 0)) {
     selectedIndexCell.value = -1;
     selectedIndexRow.value = -1;
+    selectedValue.value = "";
+
     return;
   }
 
   selectedIndexCell.value = indexCell;
   selectedIndexRow.value = indexRow;
+  selectedValue.value = value;
 }
 const getStats = (array: string[][]): { stats: { value: string, number: number }[], meta: { total: number } } => {
   let processedArray = array.slice(1).map(row => row.slice(1));
@@ -234,7 +238,7 @@ watch(result, () => {
     </div>
   </div>
   <div v-if="result && result[1][1]" class="mt-10 bg-white/10 p-6 mx-4 rounded-xl">
-    <div class="grid grid-cols-1 w-full gap-2" :class="{ '!grid-cols-2': result.length < 10 }">
+    <div class="grid grid-cols-1 w-full gap-2" :class="{ '!grid-cols-2': result.length < 9 }">
       <div>
         <h2 class="text-2xl my-2">
           Таблиця:
@@ -242,8 +246,8 @@ watch(result, () => {
         <div v-for=" (row, rowIndex)  in  result " class="row grid-cols-2">
           <div v-for=" (cell, cellIndex)  in  row "
             class="border border-white text-base text-center transition-all duration-500"
-            :class="{ 'bg-white/10': cellIndex === 0 || rowIndex === 0, 'bg-green-400/40': cellIndex === selectedIndexCell && rowIndex === selectedIndexRow, 'bg-green-400/20': (cellIndex <= selectedIndexCell && rowIndex === selectedIndexRow) || (cellIndex === selectedIndexCell && rowIndex <= selectedIndexRow) }"
-            @click="setSellectedCell(rowIndex, cellIndex)">
+            :class="{ 'bg-white/10': cellIndex === 0 || rowIndex === 0, '!bg-green-400/40': cellIndex === selectedIndexCell && rowIndex === selectedIndexRow, '!bg-green-400/20': (cellIndex <= selectedIndexCell && rowIndex === selectedIndexRow) || (cellIndex === selectedIndexCell && rowIndex <= selectedIndexRow) }"
+            @click="setSellectedCell(rowIndex, cellIndex, cell)">
             <div v-if="cellIndex === 0 && rowIndex === 0" class="w-full h-full p-0 overflow-hidden">
               <div class="line w-full h-full max-h-[45px]">
                 <div class="">
@@ -256,7 +260,7 @@ watch(result, () => {
                 </div>
               </div>
             </div>
-            <div v-else class="py-2">
+            <div v-else class="py-2" :class="{'text-red-500': cell === selectedValue}">
               {{ cell }}
             </div>
           </div>
