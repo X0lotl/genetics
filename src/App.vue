@@ -106,9 +106,9 @@ const getResult = () => {
 
   }
 
-  for (let x = 0; x < fatherCombinetions.length; x++) {
-    for (let y = 0; y < motherCombinations.length; y++) {
-      result.value[x + 1][y + 1] = arraysToString(combineArrays(fatherCombinetions[x], motherCombinations[y]));
+  for (let x = 0; x < motherCombinations.length; x++) {
+    for (let y = 0; y < fatherCombinetions.length; y++) {
+      result.value[x + 1][y + 1] = arraysToString(combineArrays(motherCombinations[x], fatherCombinetions[y]));
     }
   }
 
@@ -252,10 +252,10 @@ watch(result, () => {
               <div class="line w-full h-full max-h-[45px]">
                 <div class="">
                   <div class="flex justify-end">
-                    <Icon icon="ep:male" class="text-base mr-2 mt-2"></Icon>
+                    <Icon icon="ep:female" class="text-base mr-2 mt-2"></Icon>
                   </div>
                   <div class="flex justify-start">
-                    <Icon icon="ep:female" class="text-base ml-2 mb-2"></Icon>
+                    <Icon icon="ep:male" class="text-base ml-2 mb-2"></Icon>
                   </div>
                 </div>
               </div>
