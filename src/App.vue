@@ -252,10 +252,10 @@ watch(result, () => {
               <div class="line w-full h-full max-h-[45px]">
                 <div class="">
                   <div class="flex justify-end">
-                    <Icon icon="ep:female" class="text-base mr-2 mt-2"></Icon>
+                    <Icon icon="ep:male" class="text-base mr-2 mt-2"></Icon>
                   </div>
                   <div class="flex justify-start">
-                    <Icon icon="ep:male" class="text-base ml-2 mb-2"></Icon>
+                    <Icon icon="ep:female" class="text-base ml-2 mb-2"></Icon>
                   </div>
                 </div>
               </div>
