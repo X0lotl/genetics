@@ -192,8 +192,8 @@ watch(result, () => {
 </script>
 
 <template>
-  <div class="h-20">
-
+  <div class="h-20 flex justify-end px-10 py-5 font-bold">
+    <a href="https://t.me/X0lotle">Created by X0lotl</a>
   </div>
   <div class="mx-4">
     <div class="grid grid-cols-[1fr,1fr] gap-10">
@@ -201,7 +201,7 @@ watch(result, () => {
         <div class="grid grid-cols-2 gap-4">
           <div v-for="alel in alels" class="bg-white/10 rounded-xl p-4">
             <div class="flex justify-between gap-3">
-              <InputText v-model="alel.name" placeholder="Назва алеля"/>
+              <InputText v-model="alel.name" placeholder="Назва алеля" />
               <Button icon="pi pi-trash" @click="deleteAlel(alel)" size="large" severity="danger"></Button>
             </div>
             <div class="mt-5 grid grid-cols-1 gap-4">
@@ -260,7 +260,7 @@ watch(result, () => {
                 </div>
               </div>
             </div>
-            <div v-else class="py-2" :class="{'text-red-500': cell === selectedValue}">
+            <div v-else class="py-2" :class="{ 'text-red-500': cell === selectedValue }">
               {{ cell }}
             </div>
           </div>
@@ -268,7 +268,7 @@ watch(result, () => {
       </div>
       <div v-if="stats" class="mt-2">
         <h2 class="text-2xl">
-          Статистика:  ( Загалом: {{ stats.meta.total }} )
+          Статистика: ( Загалом: {{ stats.meta.total }} )
         </h2>
         <div class="mt-2 text-xl">
           <div class="w-full h-fit grid grid-cols-1 gap-4">
