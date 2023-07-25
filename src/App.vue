@@ -200,15 +200,15 @@ watch(result, () => {
       <div>
         <div class="grid grid-cols-2 gap-4">
           <div v-for="alel in alels" class="bg-white/10 rounded-xl p-4">
-            <div class="flex justify-between">
-              <InputText v-model="alel.name" placeholder="Назва алеля" />
+            <div class="flex justify-between gap-3">
+              <InputText v-model="alel.name" placeholder="Назва алеля"/>
               <Button icon="pi pi-trash" @click="deleteAlel(alel)" size="large" severity="danger"></Button>
             </div>
-            <div class="mt-5 grid grid-cols-1 gap-2">
+            <div class="mt-5 grid grid-cols-1 gap-4">
               <div>
                 Варіанти:
               </div>
-              <div v-for="(option, index) in alel.options" class="flex justify-between">
+              <div v-for="(option, index) in alel.options" class="flex justify-between gap-3">
                 <InputText v-model="alel.options[index]" :placeholder="'Варіант' + option"></InputText>
                 <Button icon="pi pi-trash" @click="alel.options.splice(index, 1)"></Button>
               </div>
@@ -290,7 +290,11 @@ watch(result, () => {
   </div>
 </template>
 
-<style scoped >
+<style >
+.p-inputtext {
+  width: 100%;
+}
+
 .row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10px, 100px));
